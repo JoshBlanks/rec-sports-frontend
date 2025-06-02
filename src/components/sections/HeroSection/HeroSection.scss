@@ -1,0 +1,145 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $color-purple-900, #1e3a8a, #3730a3);
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color-black, 0.2);
+  }
+
+  &__pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: $spacing-md $spacing-lg;
+
+    @include respond-to('lg') {
+      padding: $spacing-xl;
+    }
+  }
+
+  &__wrapper {
+    text-align: center;
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-lg;
+    line-height: $line-height-tight;
+
+    @include respond-to('md') {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__title-gradient {
+    background: linear-gradient(135deg, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__description {
+    font-size: $font-size-xl;
+    color: $color-gray-300;
+    margin-bottom: $spacing-xl;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include respond-to('md') {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    justify-content: center;
+
+    @include respond-to('sm') {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-md;
+    transition: $transition-default;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    &--primary {
+      background-color: $color-primary;
+      color: $color-white;
+      box-shadow: $shadow-lg;
+
+      &:hover {
+        background-color: $color-primary-dark;
+        box-shadow: $shadow-xl;
+      }
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: $color-white;
+      border-color: $color-white;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-purple-900;
+      }
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $spacing-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+  }
+
+  &__scroll-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $color-white;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate(-50%, 0);
+  }
+  40%, 43% {
+    transform: translate(-50%, -30px);
+  }
+  70% {
+    transform: translate(-50%, -15px);
+  }
+  90% {
+    transform: translate(-50%, -4px);
+  }
+}

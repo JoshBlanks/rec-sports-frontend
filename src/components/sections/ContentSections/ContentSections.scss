@@ -1,0 +1,97 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.content-section {
+  padding: 5rem 0;
+
+  &--white {
+    background-color: $color-white;
+  }
+
+  &--gray {
+    background-color: $color-gray-50;
+  }
+
+  &--purple {
+    background-color: $color-purple-900;
+    color: $color-white;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    text-align: center;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $color-gray-900;
+    margin-bottom: $spacing-md;
+
+    &--white {
+      color: $color-white;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-xl;
+    color: $color-gray-600;
+    max-width: 48rem;
+    margin: 0 auto;
+
+    &--white {
+      color: $color-white;
+      margin-bottom: $spacing-xl;
+    }
+  }
+
+  &__cta-button {
+    padding: $spacing-md $spacing-xl;
+    background-color: $color-white;
+    color: $color-purple-900;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    border-radius: $border-radius-md;
+    border: none;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: $color-gray-50;
+    }
+  }
+}
+
+.sports-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  margin-top: 3rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__card {
+    @include card;
+    padding: $spacing-xl;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-900;
+    margin-bottom: $spacing-md;
+  }
+
+  &__description {
+    color: $color-gray-600;
+  }
+}

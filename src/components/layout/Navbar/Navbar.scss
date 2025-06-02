@@ -1,0 +1,241 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+// Navbar component styles
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-sticky;
+  transition: $navbar-transition;
+  background-color: transparent;
+
+  &--scrolled {
+    background-color: $color-white;
+    box-shadow: $shadow-lg;
+    backdrop-filter: blur(4px);
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $navbar-height;
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__logo-link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+  }
+
+  &__logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: $border-radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $transition-default;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+
+    &--scrolled {
+      background-color: $color-primary;
+    }
+  }
+
+  &__logo-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $color-white;
+    transition: $transition-default;
+  }
+
+  &__logo-text {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    transition: $transition-default;
+    color: $color-white;
+
+    &--scrolled {
+      color: $color-gray-900;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include respond-to('md') {
+      display: block;
+    }
+  }
+
+  &__nav-links {
+    margin-left: 2.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+  }
+
+  &__nav-item {
+    position: relative;
+  }
+
+  &__nav-button {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    transition: $transition-default;
+    position: relative;
+    overflow: hidden;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $color-white;
+
+    &--scrolled {
+      color: $color-gray-900;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &:hover {
+      color: #e9d5ff;
+    }
+  }
+
+  &__nav-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__nav-arrow {
+    width: 1rem;
+    height: 1rem;
+    transition: $transition-default;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__nav-underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-primary;
+    transform: scaleX(0);
+    transition: $transition-default;
+    transform-origin: left;
+  }
+
+  &__nav-button:hover &__nav-underline {
+    transform: scaleX(1);
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: $spacing-xs;
+    width: 12rem;
+    background-color: $color-white;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-lg;
+    border: 1px solid $color-gray-200;
+    padding: $spacing-sm 0;
+    z-index: $z-index-dropdown;
+  }
+
+  &__dropdown-item {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    color: $color-gray-600;
+    text-decoration: none;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: $color-gray-100;
+      color: $color-primary;
+    }
+  }
+
+  &__login {
+    display: none;
+
+    @include respond-to('md') {
+      display: block;
+    }
+  }
+
+  &__login-button {
+    padding: $spacing-sm $spacing-lg;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border-radius: $border-radius-md;
+    border: 2px solid;
+    transition: $transition-default;
+    text-decoration: none;
+    color: $color-white;
+    border-color: $color-white;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-purple-900;
+    }
+
+    &--scrolled {
+      color: $color-primary;
+      border-color: $color-primary;
+
+      &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
+  }
+
+  &__mobile {
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  &__mobile-button {
+    padding: $spacing-sm;
+    border-radius: $border-radius-sm;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: $transition-default;
+    color: $color-white;
+
+    &--scrolled {
+      color: $color-gray-900;
+    }
+  }
+
+  &__mobile-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}

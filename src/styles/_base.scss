@@ -1,0 +1,393 @@
+// CSS Reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  @include smooth-scroll;
+  font-size: 16px; // Base font size
+  line-height: $line-height-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: $font-family-sans;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-normal;
+  color: $color-gray-900;
+  background-color: $color-white;
+  min-height: 100vh;
+  
+  // Prevent horizontal scroll on mobile
+  overflow-x: hidden;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $color-gray-900;
+  margin-bottom: $spacing-4;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  
+  @include respond-to('md') {
+    font-size: $font-size-5xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  
+  @include respond-to('md') {
+    font-size: $font-size-4xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  
+  @include respond-to('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-base;
+}
+
+p {
+  margin-bottom: $spacing-4;
+  color: $color-gray-600;
+  line-height: $line-height-relaxed;
+}
+
+// Links
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: $transition-colors $duration-200 $ease-out;
+  
+  &:hover {
+    color: $color-primary-dark;
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: $spacing-4;
+  padding-left: $spacing-6;
+}
+
+li {
+  margin-bottom: $spacing-1;
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Form elements
+input,
+textarea,
+select {
+  @include form-input;
+}
+
+button {
+  @include button-base;
+  
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-6;
+}
+
+th,
+td {
+  padding: $spacing-3 $spacing-4;
+  text-align: left;
+  border-bottom: 1px solid $color-gray-200;
+}
+
+th {
+  font-weight: $font-weight-semibold;
+  color: $color-gray-900;
+  background-color: $color-gray-50;
+}
+
+// Code
+code {
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  background-color: $color-gray-100;
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-sm;
+  color: $color-gray-800;
+}
+
+pre {
+  background-color: $color-gray-900;
+  color: $color-white;
+  padding: $spacing-4;
+  border-radius: $border-radius-md;
+  overflow-x: auto;
+  margin-bottom: $spacing-4;
+  
+  code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid $color-primary;
+  padding-left: $spacing-4;
+  margin: $spacing-6 0;
+  font-style: italic;
+  color: $color-gray-600;
+}
+
+// Horizontal rule
+hr {
+  border: none;
+  height: 1px;
+  background-color: $color-gray-200;
+  margin: $spacing-8 0;
+}
+
+// Selection
+::selection {
+  background-color: rgba($color-primary, 0.2);
+  color: $color-gray-900;
+}
+
+::-moz-selection {
+  background-color: rgba($color-primary, 0.2);
+  color: $color-gray-900;
+}
+
+// Scrollbar styling (webkit browsers)
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $color-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $color-gray-300;
+  border-radius: $border-radius-full;
+  
+  &:hover {
+    background-color: $color-gray-400;
+  }
+}
+
+// Focus visible (for better accessibility)
+:focus-visible {
+  @include focus-ring;
+}
+
+// Remove focus ring for mouse users
+:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+// Utility classes
+.container {
+  @include container;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.text-primary {
+  color: $color-primary;
+}
+
+.text-white {
+  color: $color-white;
+}
+
+.bg-primary {
+  background-color: $color-primary;
+}
+
+.bg-white {
+  background-color: $color-white;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.truncate {
+  @include truncate;
+}
+
+// Margin and padding utilities
+@each $size, $value in (
+  '0': 0,
+  '1': $spacing-1,
+  '2': $spacing-2,
+  '3': $spacing-3,
+  '4': $spacing-4,
+  '5': $spacing-5,
+  '6': $spacing-6,
+  '8': $spacing-8,
+  '10': $spacing-10,
+  '12': $spacing-12,
+  '16': $spacing-16,
+  '20': $spacing-20,
+  '24': $spacing-24
+) {
+  .m-#{$size} { margin: $value; }
+  .mt-#{$size} { margin-top: $value; }
+  .mr-#{$size} { margin-right: $value; }
+  .mb-#{$size} { margin-bottom: $value; }
+  .ml-#{$size} { margin-left: $value; }
+  .mx-#{$size} { 
+    margin-left: $value; 
+    margin-right: $value; 
+  }
+  .my-#{$size} { 
+    margin-top: $value; 
+    margin-bottom: $value; 
+  }
+  
+  .p-#{$size} { padding: $value; }
+  .pt-#{$size} { padding-top: $value; }
+  .pr-#{$size} { padding-right: $value; }
+  .pb-#{$size} { padding-bottom: $value; }
+  .pl-#{$size} { padding-left: $value; }
+  .px-#{$size} { 
+    padding-left: $value; 
+    padding-right: $value; 
+  }
+  .py-#{$size} { 
+    padding-top: $value; 
+    padding-bottom: $value; 
+  }
+}
+
+// Responsive utilities
+.block { display: block; }
+.inline-block { display: inline-block; }
+.inline { display: inline; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+@include respond-to('sm') {
+  .sm\\:block { display: block; }
+  .sm\\:inline-block { display: inline-block; }
+  .sm\\:inline { display: inline; }
+  .sm\\:flex { display: flex; }
+  .sm\\:inline-flex { display: inline-flex; }
+  .sm\\:grid { display: grid; }
+  .sm\\:hidden { display: none; }
+}
+
+@include respond-to('md') {
+  .md\\:block { display: block; }
+  .md\\:inline-block { display: inline-block; }
+  .md\\:inline { display: inline; }
+  .md\\:flex { display: flex; }
+  .md\\:inline-flex { display: inline-flex; }
+  .md\\:grid { display: grid; }
+  .md\\:hidden { display: none; }
+}
+
+@include respond-to('lg') {
+  .lg\\:block { display: block; }
+  .lg\\:inline-block { display: inline-block; }
+  .lg\\:inline { display: inline; }
+  .lg\\:flex { display: flex; }
+  .lg\\:inline-flex { display: inline-flex; }
+  .lg\\:grid { display: grid; }
+  .lg\\:hidden { display: none; }
+}
+
+// Accessibility improvements
+@include reduced-motion-support {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@include high-contrast-support {
+  a {
+    text-decoration: underline;
+  }
+  
+  button,
+  input,
+  select,
+  textarea {
+    border: 2px solid;
+  }
+}

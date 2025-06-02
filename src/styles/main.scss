@@ -1,0 +1,12 @@
+// Main stylesheet that imports all global styles
+
+// IMPORTANT: @use rules must come FIRST, before any other CSS rules
+@use 'variables';
+@use 'mixins';
+@use 'base';
+
+// Import Google Fonts AFTER @use statements
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+// Global component styles can be imported here if needed
+// Note: Individual component styles are imported at the component level
